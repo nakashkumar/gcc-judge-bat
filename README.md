@@ -1,5 +1,5 @@
 # gcc-judge-bat
-Auto compile and check testcases using exact match strategy.
+Auto compile C/C++ programs and check testcases using exact match strategy.
 
 Run checker.bat
 

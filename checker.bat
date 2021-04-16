@@ -31,11 +31,7 @@ IF %ERRORLEVEL% GEQ 1 (
     !CC! src\!qName!.c -o tmp\main >log.txt 2>&1
     IF %ERRORLEVEL% EQU 0 (
       .\tmp\main.exe < tests\!tType!\!qName!\!tFile! > .\tmp\output
-      IF %ERRORLEVEL% EQU 0 (
-        CALL :CheckOutput
-      ) ELSE (
-        CALL :PrintStatus "Failed (Runtime Error)" 
-      )
+      CALL :CheckOutput
     ) ELSE (
         CALL :PrintStatus "Failed (Compilation Error)"
     )

@@ -37,7 +37,7 @@ IF %ERRORLEVEL% GEQ 1 (
       SET "LastQ=!qName!"
       SET LastErr=%ERRORLEVEL%
     )
-    if !LastErr! EQU 0 (
+    IF !LastErr! EQU 0 (
       .\tmp\main.exe < tests\!tType!\!qName!\!tFile! > .\tmp\output
       CALL :CheckOutput
     ) ELSE (

@@ -2,9 +2,13 @@
 
 SETLOCAL ENABLEDELAYEDEXPANSION
 SET CC=gcc
+SET FLAGS=-std=c99
 
 SET totalTests=0
 SET totalPassed=0
+SET "LastQ="
+SET "LastErr="
+
 
 !CC! -v >NUL 2>&1
 IF %ERRORLEVEL% GEQ 1 (
@@ -28,8 +32,12 @@ IF %ERRORLEVEL% GEQ 1 (
 :RunTest
     CALL :GetToken "%~1"
     SET /a totalTests+=1
-    !CC! src\!qName!.c -o tmp\main >log.txt 2>&1
-    IF %ERRORLEVEL% EQU 0 (
+    IF not !LastQ! == !qName! (
+      !CC! !FLAGS! src\!qName!.c -o tmp\main >log.txt 2>&1
+      SET "LastQ=!qName!"
+      SET LastErr=%ERRORLEVEL%
+    )
+    if !LastErr! EQU 0 (
       .\tmp\main.exe < tests\!tType!\!qName!\!tFile! > .\tmp\output
       CALL :CheckOutput
     ) ELSE (

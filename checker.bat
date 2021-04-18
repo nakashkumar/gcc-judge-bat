@@ -13,7 +13,7 @@ IF %ERRORLEVEL% GEQ 1 (
 ) ELSE (
   IF not EXIST tmp (mkdir tmp)
   FOR /r tests %%i in (*.in) DO (
-    CALL :RunTest %%%i
+    CALL :RunTest "%%i"
   )
   ECHO.
   ECHO Total Tests !totalTests!
@@ -26,7 +26,7 @@ IF %ERRORLEVEL% GEQ 1 (
 )
 
 :RunTest
-    CALL :GetToken %~1
+    CALL :GetToken "%~1"
     SET /a totalTests+=1
     !CC! src\!qName!.c -o tmp\main >log.txt 2>&1
     IF %ERRORLEVEL% EQU 0 (

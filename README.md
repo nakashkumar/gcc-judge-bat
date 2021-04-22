@@ -1,5 +1,6 @@
 # gcc-judge-bat
-Auto-compile C/C++ programs and check testcases using exact match strategy. Used to mark assignments in Programming Fundamentals class at FAST NUCES Karachi.
+Auto-compile C/C++ source codes placed in `src` folder and check test cases placed in `tests` folder. That is it, nothing innovative :P
+*Used to mark assignments in Programming Fundamentals class at FAST NUCES Karachi.*
 
 Run `checker.bat`
 
